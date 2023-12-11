@@ -1,0 +1,2 @@
+# hgw
+Pimcore skeleton sample

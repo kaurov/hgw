@@ -47,3 +47,6 @@ nbproject
 
 # temp
 .temp
+/doc/
+/ns1/
+/ns2/

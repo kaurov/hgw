@@ -115,8 +115,9 @@ framework:
 #                provider: 'redis://localhost' # Redis DNS, see: https://symfony.com/doc/current/components/cache/adapters/redis_adapter.html#configure-the-connection
 
 #### USE SESSION HANDLER CONFIGURED IN php.ini
-#    session:
+    session:
 #        handler_id: null
+        gc_probability: null
 
 #### SYMFONY MAILER TRANSPORTS
 #    mailer:

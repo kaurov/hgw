@@ -22,9 +22,6 @@
     "codeception/codeception": "^5.0.3",
     "codeception/module-symfony": "^3.1.0"
   },
-  "conflict": {
-    "symfony/finder": "5.4.26 || 6.2.13 || 6.3.2"
-  },
   "suggest": {
     "pimcore/data-hub": "Universal data interface for GraphQL, CSV and other formats"
   },

@@ -1,5 +1,5 @@
 parameters:
-    secret: end6cG84cGN6dHF2bzE2bDFqNjh6bmZjamlyZm04NnM=
+    secret: eGJ4Z3cxeGFtam50emhkaWxqZGJlb2V6dWxsMThlMnE=
 
     # customize the full path to external executables
     # normally they are auto-detected by `which program` or auto-discovered in the configured path in
@@ -39,27 +39,42 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
-    #
-    # CONTROLLERS
-    #
 
-    # auto-register all controllers as services
+    # ---------------------------------------------------------
+    # Register all controllers of App as services
+    # ---------------------------------------------------------
     App\Controller\:
         resource: '../src/Controller'
         public: true
-        tags: [ 'controller.service_arguments' ]
+        tags: ['controller.service_arguments']
 
 
-    #
-    # COMMANDS
-    #
 
-    # auto-register all commands as services
+    # ---------------------------------------------------------
+    # Register all commands of App as commands
+    # ---------------------------------------------------------
     App\Command\:
         resource: '../src/Command/*'
         tags: [ 'console.command' ]
 
 
+    # ---------------------------------------------------------
+    # Misc Services
+    # ---------------------------------------------------------
+    App\Website\Navigation\BreadcrumbHelperService: ~
+
+
+    # ---------------------------------------------------------
+    # Twig Extensions
+    # ---------------------------------------------------------
+    App\Twig\Extension\NavigationExtension:
+        tags: ['twig.extension']
+
+    App\Twig\Extension\LanguageSwitcherExtension:
+        tags: ['twig.extension']
+
+    App\Twig\Extension\NewsExtension:
+        tags: ['twig.extension']
 
     # Example custom templating helper
     # App\Templating\Helper\Example:
@@ -73,3 +88,32 @@ services:
     # App\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+
+
+    # ---------------------------------------------------------
+    # Link Generators for DataObjects
+    # ---------------------------------------------------------
+    App\Website\LinkGenerator\NewsLinkGenerator:
+        public: true
+
+
+    # ---------------------------------------------------------
+    # Overwrite Pimcore Default Services
+    # ---------------------------------------------------------
+
+    # overwrite PimcoreUrl helper to add existing parameters to generated urls
+    Pimcore\Twig\Extension\Templating\PimcoreUrl:
+        class: App\Website\Tool\PimcoreUrl
+        arguments:
+            $generator: '@router'
+
+    # ---------------------------------------------------------
+    # Event Listeners
+    # ---------------------------------------------------------
+
+    # adds additional static files to admin backend
+    App\EventListener\PimcoreAdminListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.bundle_manager.paths.css, method: addCSSFiles }
+            - { name: kernel.event_listener, event: pimcore.bundle_manager.paths.js, method: addJSFiles }
+            - { name: kernel.event_listener, event: pimcore.admin.resolve.elementAdminStyle, method: onResolveElementAdminStyle }

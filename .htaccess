@@ -1,1 +1,25 @@
-Deny from all
+RewriteEngine On
+RewriteRule ^(.*)$ public/$1
+
+# ASSETS: check if request method is GET (because of WebDAV) and if the requested file (asset) exists on the filesystem, if both match, deliver the asset directly
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)
+RewriteCond %{DOCUMENT_ROOT}/public_html/public/var/assets%{REQUEST_URI} -f
+RewriteRule ^(.*)$ /var/assets%{REQUEST_URI} [PT,L]
+
+# Thumbnails
+RewriteCond %{REQUEST_URI} .*/(image|video)-thumb__[\d]+__.*
+RewriteCond %{DOCUMENT_ROOT}/public/var/tmp/pages%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ /var/tmp/thumbnails%{REQUEST_URI} [PT,L]
+
+# static pages
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)
+RewriteCond %{QUERY_STRING}   !(pimcore_editmode=true|pimcore_preview|pimcore_version)
+RewriteCond %{DOCUMENT_ROOT}/public_html/public/var/tmp/pages%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ /var/tmp/pages%{REQUEST_URI}.html [PT,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php81” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

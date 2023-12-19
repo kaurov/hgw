@@ -9,6 +9,7 @@
 /public/bundles/
 
 # local config
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -50,3 +51,5 @@ nbproject
 /doc/
 /ns1/
 /ns2/
+/error_log
+/bin/error_log

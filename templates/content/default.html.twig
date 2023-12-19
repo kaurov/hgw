@@ -1,0 +1,34 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div id="main-content" class="main-content">
+        {% if document.getTitle() is empty %}
+            {% do pimcore_head_title(pimcore_input('headline').getData(), 'PREPEND') %}
+        {% endif %}
+
+        <div class="page-header">
+            <h1>{{ pimcore_input('headline', {'placeholder':'Headline'}) }}</h1>
+        </div>
+
+        {% set allowedBlocks = [
+            'blockquote', 'embed', 'gallery-carousel', 'gallery-folder',
+            'gallery-single-images', 'headlines', 'horizontal-line', 'icon-teaser-row', 'image',
+            'standard-teaser', 'newsteaser', 'pdf', 'text-accordion', 'validity',
+            'video', 'wysiwyg', 'wysiwyg-with-images',
+        ] %}
+
+
+        {#  'product-teaser', 'time-slider-featurette', 'featurette',
+            'image-hotspot-marker', 'image-metadata',
+        #}
+
+        {{ pimcore_areablock('scenesTop', {'allowed': allowedBlocks }) }}
+
+        <div class="content">
+            {{ pimcore_wysiwyg('content', {'placeholder':'Content'}) }}
+        </div>
+
+        {{ pimcore_areablock('scenesBottom', {'allowed': allowedBlocks }) }}
+
+    </div>
+{% endblock %}

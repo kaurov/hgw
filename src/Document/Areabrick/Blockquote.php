@@ -19,9 +19,6 @@ use Pimcore\Extension\Document\Areabrick\EditableDialogBoxConfiguration;
 use Pimcore\Extension\Document\Areabrick\EditableDialogBoxInterface;
 use Pimcore\Model\Document\Editable;
 
-/**
- * Blockquote AreaBrick
- */
 class Blockquote extends AbstractAreabrick implements EditableDialogBoxInterface
 {
     public function getEditableDialogBoxConfiguration(Editable $area, ?Editable\Area\Info $info): EditableDialogBoxConfiguration
@@ -49,10 +46,6 @@ class Blockquote extends AbstractAreabrick implements EditableDialogBoxInterface
         return $config;
     }
 
-    /**
-     * needsReload
-     * @return bool
-     */
     public function needsReload(): bool
     {
         return false;

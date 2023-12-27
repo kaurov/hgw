@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * GalleryCarousel Areabrick
- */
 class GalleryCarousel extends AbstractAreabrick
 {
     /**

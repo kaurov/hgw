@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * EmailWysiwyg Areabrick
- */
 class EmailWysiwyg extends AbstractAreabrick
 {
     /**

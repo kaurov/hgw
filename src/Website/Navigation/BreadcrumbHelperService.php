@@ -22,9 +22,6 @@ use Pimcore\Twig\Extension\Templating\Placeholder;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-/**
- * BreadcrumbHelperService
- */
 class BreadcrumbHelperService
 {
     /**

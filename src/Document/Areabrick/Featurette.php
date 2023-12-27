@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * Featurette Areabrick
- */
 class Featurette extends AbstractAreabrick
 {
 }

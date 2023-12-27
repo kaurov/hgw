@@ -1,38 +1,36 @@
 <nav aria-label="Pagination">
     <ul class="pagination justify-content-center">
-        {% if(paginationVariables.previous is defined) %}
+        {%  if(paginationVariables.previous is defined) %}
             <li class="page-item">
-                <a class="page-link prev" href="{{ pimcore_url({'page': paginationVariables.previous}) }}"
-                   aria-label="Previous">
+                <a class="page-link prev" href="{{  pimcore_url({'page': paginationVariables.previous}) }}" aria-label="Previous">
                     <span aria-hidden="true"></span>
                 </a>
             </li>
-        {% endif %}
+        {%  endif %}
 
-        {% for page in paginationVariables.pagesInRange %}
+        {%  for page in paginationVariables.pagesInRange %}
 
-            {% if(paginationVariables.current == page) %}
+            {%  if(paginationVariables.current == page) %}
 
                 <li class="page-item active" aria-current="page">
                                   <span class="page-link">
-                                    {{ page }}
+                                    {{  page }}
                                     <span class="sr-only">(current)</span>
                                   </span>
                 </li>
 
-            {% else %}
-                <li class="page-item"><a class="page-link" href="{{ pimcore_url({'page': page}) }}">{{ page }}</a></li>
-            {% endif %}
+            {%  else %}
+                <li class="page-item"><a class="page-link" href="{{  pimcore_url({'page': page}) }}">{{ page }}</a></li>
+            {%  endif %}
 
         {% endfor %}
 
-        {% if(paginationVariables.next is defined) %}
+        {%  if(paginationVariables.next is defined) %}
             <li class="page-item">
-                <a class="page-link next" href="{{ pimcore_url({'page': paginationVariables.next}) }}"
-                   aria-label="Next">
+                <a class="page-link next" href="{{  pimcore_url({'page': paginationVariables.next}) }}" aria-label="Next">
                     <span class="flip" aria-hidden="true"></span>
                 </a>
             </li>
-        {% endif %}
+        {%  endif %}
     </ul>
 </nav>

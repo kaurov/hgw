@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * Headlines Areabrick
- */
 class Headlines extends AbstractAreabrick
 {
 }

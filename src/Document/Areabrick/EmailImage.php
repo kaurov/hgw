@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * EmailImage Areabrick
- */
 class EmailImage extends AbstractAreabrick
 {
     /**

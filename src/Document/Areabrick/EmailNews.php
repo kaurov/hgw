@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * EmailNews Areabrick
- */
 class EmailNews extends AbstractAreabrick
 {
     /**

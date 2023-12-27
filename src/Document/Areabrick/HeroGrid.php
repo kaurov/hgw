@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * HeroGrid Areabrick
- */
 class HeroGrid extends AbstractAreabrick
 {
     /**

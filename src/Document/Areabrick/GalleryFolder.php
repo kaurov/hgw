@@ -16,7 +16,6 @@
 namespace App\Document\Areabrick;
 
 /**
- * GalleryFolder Areabrick
  * @uses DefaultController::galleryRenderletAction()
  */
 class GalleryFolder extends AbstractAreabrick

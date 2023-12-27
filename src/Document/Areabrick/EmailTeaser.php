@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * EmailTeaser Areabrick
- */
 class EmailTeaser extends AbstractAreabrick
 {
     /**

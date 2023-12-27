@@ -3,7 +3,6 @@
 {% set uniqueId = 'accordionAreaBrick' ~ random(1000, 9999) %}
 <div class="accordion" id="{{ uniqueId }}">
     {% for counter in pimcore_iterate_block(pimcore_block('teaserblock',{class:'row11'})) %}
-
         {# @see \App\Controller\NewsController::newsAccordionAction #}
         {# @see news/news_accordion.html.twig #}
         {{ pimcore_renderlet('newsAccordion', {
@@ -19,6 +18,5 @@
             height : 'auto',
             width: '100%'
         }) }}
-
     {% endfor %}
 </div>

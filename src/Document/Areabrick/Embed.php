@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * Embed Areabrick
- */
 class Embed extends AbstractAreabrick
 {
 }

@@ -15,9 +15,6 @@
 
 namespace App\Document\Areabrick;
 
-/**
- * GallerySingleImages Areabrick
- */
 class GallerySingleImages extends AbstractAreabrick
 {
     /**

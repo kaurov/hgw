@@ -34,4 +34,13 @@ class DefaultController extends FrontendController
 
         return $this->render('default/gallery_renderlet.html.twig', $params);
     }
+
+    /**
+     * Renders email templates
+     * @return Response
+     */
+    public function genericMailAction(): Response
+    {
+        return $this->render('default/generic_mail.html.twig');
+    }
 }

@@ -1,0 +1,24 @@
+<h2>{{ pimcore_input('productTeaserTitle', {'placeholder':'Enter Title'}) }}</h2>
+
+{% set uniqueId = 'accordionAreaBrick' ~ random(1000, 9999) %}
+<div class="accordion" id="{{ uniqueId }}">
+    {% for counter in pimcore_iterate_block(pimcore_block('teaserblock',{class:'row11'})) %}
+
+        {# @see \App\Controller\NewsController::newsAccordionAction #}
+        {# @see news/news_accordion.html.twig #}
+        {{ pimcore_renderlet('newsAccordion', {
+            type: 'object',
+            editmode: editmode,
+            controller: 'App\\Controller\\NewsController::newsAccordionAction',
+            title: 'Drag a News here',
+            counter: loop.index,
+            align: 'left',
+            isImage: false,
+            className: 'News',
+            parentId: '#' ~ uniqueId,
+            height : 'auto',
+            width: '100%'
+        }) }}
+
+    {% endfor %}
+</div>

@@ -1,0 +1,44 @@
+{# @var news \Pimcore\Model\DataObject\News #}
+{# @see \App\Controller\NewsController::newsAccordionAction #}
+
+{% set detailLink = app_news_detaillink(news) %}
+{% set parentId = parentId is defined ? parentId : '#UndefinedAccordionAreaBrick' %}
+<div class="card">
+    <div class="card-header" id="heading{{ counter }}">
+        <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapse{{ counter }}"
+                    aria-expanded="true" aria-controls="collapse{{ counter }}">
+                {{ counter }} | {{ news.title }}
+            </button>
+        </h2>
+    </div>
+    <div id="collapse{{ counter }}" class="collapse" aria-labelledby="heading{{ counter }}"
+         data-parent="{{ parentId }}">
+        <div class="card-body">
+            {% if isImage %}
+                {% if news.imageMain %}
+
+                    {{ news.imageMain.thumbnail('standardTeaser').html({imgAttributes: {class: 'img-fluid'}}) | raw }}
+
+                {% elseif news.gallery.items %}
+
+                    {% set image = news.gallery.current %}
+
+                    {% if image.image %}
+                        {{ image.image.thumbnail('standardTeaser').html({imgAttributes: {class: 'img-fluid'}}) | raw }}
+                    {% endif %}
+
+                {% endif %}
+            {% endif %}
+
+            <div class="short-text">
+                {{ news.shortText }}
+                <a href="{{ detailLink }}" class="ReadMore">
+                    <span>{{ 'general.read-more' | trans }}</span>
+                    <i class="fa-sharp fa-solid"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

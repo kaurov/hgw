@@ -69,42 +69,70 @@ class NewsController extends BaseController
             throw new NotFoundHttpException('News not found.');
         }
 
-$headTitleHelper($news->getTitle());
-$breadcrumbHelperService->enrichNewsPage($news);
+        $headTitleHelper($news->getTitle());
+        $breadcrumbHelperService->enrichNewsPage($news);
 
-$placeholderHelper('canonical')->set($newsLinkGenerator->generate($news, ['document' => $this->document->getProperty(self::NEWS_DEFAULT_DOCUMENT_PROPERTY_NAME)]));
+        $placeholderHelper('canonical')->set($newsLinkGenerator->generate($news, ['document' => $this->document->getProperty(self::NEWS_DEFAULT_DOCUMENT_PROPERTY_NAME)]));
 
-return $this->render('news/detail.html.twig', [
-    'news' => $news
-]);
-}
-
-public
-function newsTeaserAction(Request $request): Response
-{
-    $paramsBag = [];
-    if ($request->get('type') === 'object') {
-        $news = News::getById($request->get('id'));
-        $paramsBag['news'] = $news;
-
-        return $this->render('news/news_teaser.html.twig', $paramsBag);
+        return $this->render('news/detail.html.twig', [
+            'news' => $news
+        ]);
     }
 
-    throw new NotFoundHttpException('News not found.');
-}
+    /**
+     * Repeated NewsTeaser element
+     * @param Request $request
+     * @return Response
+     * @see templates/areas/news-teaser/view.html.twig
+     */
+    public function newsTeaserAction(Request $request): Response
+    {
+        $paramsBag = [];
+        if ($request->get('type') === 'object') {
+            $news = News::getById($request->get('id'));
+            $paramsBag['news'] = $news;
 
-public
-function emailNewsTeaserAction(Request $request, NewsLinkGenerator $newsLinkGenerator): Response
-{
-    $paramsBag = [];
-    if ($request->get('type') === 'object') {
-        $news = News::getById($request->get('id'));
-        $paramsBag['news'] = $news;
-        $paramsBag['detailLink'] = $newsLinkGenerator->generate($news, ['document' => $this->document->getProperty('news_default_document')]);
+            return $this->render('news/news_teaser.html.twig', $paramsBag);
+        }
 
-        return $this->render('news/email_news_teaser.html.twig', $paramsBag);
+        throw new NotFoundHttpException('News not found.');
     }
 
-    throw new NotFoundHttpException('News not found.');
-}
+    /**
+     * Repeated NewsAccordion element
+     * @param Request $request
+     * @return Response
+     * @see templates/areas/news-accordion/view.html.twig
+     */
+    public function newsAccordionAction(Request $request): Response
+    {
+        if ($request->get('type') === 'object') {
+            $news = News::getById($request->get('id'));
+            $paramsBag = $request->attributes->all();
+            $paramsBag['news'] = $news;
+            return $this->render('news/news_accordion.html.twig', $paramsBag);
+        }
+
+        throw new NotFoundHttpException('News not found.');
+    }
+
+    /**
+     * News Teaser for email documents
+     * @param Request $request
+     * @param NewsLinkGenerator $newsLinkGenerator
+     * @return Response
+     */
+    public function emailNewsTeaserAction(Request $request, NewsLinkGenerator $newsLinkGenerator): Response
+    {
+        $paramsBag = [];
+        if ($request->get('type') === 'object') {
+            $news = News::getById($request->get('id'));
+            $paramsBag['news'] = $news;
+            $paramsBag['detailLink'] = $newsLinkGenerator->generate($news, ['document' => $this->document->getProperty('news_default_document')]);
+
+            return $this->render('news/email_news_teaser.html.twig', $paramsBag);
+        }
+
+        throw new NotFoundHttpException('News not found.');
+    }
 }

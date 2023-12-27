@@ -11,6 +11,7 @@
         </div>
 
         {% set allowedBlocks = [
+            'news-accordion', 'news-teaser','standard-teaser',
             'blockquote', 'embed', 'gallery-carousel', 'gallery-folder',
             'gallery-single-images', 'headlines', 'horizontal-line', 'icon-teaser-row', 'image',
             'standard-teaser', 'newsteaser', 'pdf', 'text-accordion', 'validity',
@@ -18,8 +19,9 @@
         ] %}
 
 
-        {#  'product-teaser', 'time-slider-featurette', 'featurette',
-            'image-hotspot-marker', 'image-metadata',
+        {#
+        'time-slider-featurette', 'featurette',
+        'image-hotspot-marker', 'image-metadata',
         #}
 
         {{ pimcore_areablock('scenesTop', {'allowed': allowedBlocks }) }}

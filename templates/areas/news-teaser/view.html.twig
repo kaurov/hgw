@@ -4,6 +4,7 @@
         <div class="row mb-3 text-left">
             {% for i in pimcore_iterate_block(pimcore_block('teaserblock',{class:'row11'})) %}
                 <div class="{{ editmode ? '' : 'col-md-4 d-flex align-items-stretch flex-column' }}">
+                    {# @see \App\Controller\NewsController::newsTeaserAction#}
                     {{
                         pimcore_renderlet('newsTeaser', {
                             type: 'object',

@@ -15,6 +15,7 @@
  * - date [datetime]
  * - imageMain [image]
  * - gallery [imageGallery]
+ * - author [manyToManyObjectRelation]
  * - categories [manyToManyObjectRelation]
  */
 
@@ -25,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1702900161,
+   'modificationDate' => 1703676289,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -450,6 +451,48 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+                     'name' => 'author',
+                     'title' => 'Author',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => true,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'classes' => 
+                    array (
+                      0 => 
+                      array (
+                        'classes' => 'Author',
+                      ),
+                    ),
+                     'displayMode' => 'grid',
+                     'pathFormatterClass' => '',
+                     'maxItems' => NULL,
+                     'visibleFields' => 
+                    array (
+                    ),
+                     'allowToCreateNewObject' => false,
+                     'allowToClearRelation' => true,
+                     'optimizedAdminLoading' => false,
+                     'enableTextSelection' => false,
+                     'visibleFieldDefinitions' => 
+                    array (
+                    ),
+                     'width' => '',
+                     'height' => '',
+                  )),
+                  1 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
                      'name' => 'categories',
                      'title' => 'Categories',

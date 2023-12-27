@@ -5,8 +5,10 @@
  * Variants: no
  *
  * Fields Summary:
- * - name [input]
- * - role [input]
+ * - localizedfields [localizedfields]
+ * -- name [input]
+ * -- role [input]
+ * - news [reverseObjectRelation]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -16,7 +18,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1702994505,
+   'modificationDate' => 1703676174,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -61,10 +63,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'name' => 'Layout',
+             'name' => 'General',
              'type' => NULL,
              'region' => NULL,
-             'title' => '',
+             'title' => 'General',
              'width' => '',
              'height' => '',
              'collapsible' => false,
@@ -74,39 +76,133 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'name',
-                 'title' => 'Name',
-                 'tooltip' => '',
-                 'mandatory' => true,
+              Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
+                 'name' => 'localizedfields',
+                 'title' => '',
+                 'tooltip' => NULL,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
-                 'style' => '',
+                 'style' => NULL,
                  'permissions' => NULL,
                  'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
+                 'visibleGridView' => true,
+                 'visibleSearch' => true,
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
+                 'children' => 
+                array (
+                  0 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                     'name' => 'name',
+                     'title' => 'Name',
+                     'tooltip' => '',
+                     'mandatory' => true,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => '',
+                     'defaultValueGenerator' => '',
+                  )),
+                  1 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                     'name' => 'role',
+                     'title' => 'Role',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => '',
+                     'defaultValueGenerator' => '',
+                  )),
+                ),
+                 'region' => NULL,
+                 'layout' => NULL,
+                 'maxTabs' => NULL,
+                 'border' => false,
+                 'provideSplitView' => false,
+                 'tabPosition' => 'top',
+                 'hideLabelsWhenTabsReached' => NULL,
+                 'referencedFields' => 
                 array (
                 ),
-                 'unique' => false,
-                 'showCharCount' => false,
-                 'width' => '',
-                 'defaultValueGenerator' => '',
+                 'permissionView' => NULL,
+                 'permissionEdit' => NULL,
+                 'labelWidth' => 100,
+                 'labelAlign' => 'left',
+                 'fieldDefinitionsCache' => NULL,
               )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'role',
-                 'title' => 'Role',
+            ),
+             'locked' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
+             'icon' => '',
+             'labelWidth' => 100,
+             'labelAlign' => 'left',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+             'name' => 'Relations',
+             'type' => NULL,
+             'region' => NULL,
+             'title' => 'Relations',
+             'width' => '',
+             'height' => '',
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => '',
+             'datatype' => 'layout',
+             'children' => 
+            array (
+              0 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\ReverseObjectRelation::__set_state(array(
+                 'name' => 'news',
+                 'title' => 'News',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -115,23 +211,35 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'fieldtype' => '',
-                 'relationType' => false,
+                 'relationType' => true,
                  'invisible' => false,
                  'visibleGridView' => false,
                  'visibleSearch' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
+                 'classes' => 
                 array (
                 ),
-                 'unique' => false,
-                 'showCharCount' => false,
+                 'displayMode' => NULL,
+                 'pathFormatterClass' => '',
+                 'maxItems' => NULL,
+                 'visibleFields' => 
+                array (
+                ),
+                 'allowToCreateNewObject' => false,
+                 'allowToClearRelation' => true,
+                 'optimizedAdminLoading' => false,
+                 'enableTextSelection' => false,
+                 'visibleFieldDefinitions' => 
+                array (
+                ),
                  'width' => '',
-                 'defaultValueGenerator' => '',
+                 'height' => '',
+                 'ownerClassName' => 'News',
+                 'ownerClassId' => NULL,
+                 'ownerFieldName' => 'author',
+                 'lazyLoading' => true,
               )),
             ),
              'locked' => false,
